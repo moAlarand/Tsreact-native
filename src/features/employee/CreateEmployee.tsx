@@ -15,7 +15,7 @@ export const CreateEmployeeForm: React.FC = () => {
     <View style={styles.container}>
       <AppText style={{padding: 5}}>Pick Image</AppText>
       <AppImgPicker
-        // title="Pick Image"
+        title="Pick Image"
         style={styles.img}
         height={50}
         placeholderImg={require('../../assets/img/placeholderImg.png')}

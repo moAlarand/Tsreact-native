@@ -4,12 +4,15 @@ import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import {IconType, AppHeader} from '../../common';
 import {appColors} from '../../common/Theme/colors';
 import {AppIconButton} from '../../common/iconButton/IconButton';
-import {EmployeeList} from '../../features/employee/EmployeesList';
+import {EmployeeList} from '../../features/employees/EmployeesList';
 
-export const Home: NavigationFunctionComponent = ({componentId}) => {
+export const Home: NavigationFunctionComponent = (props) => {
+  const {componentId} = props;
+
   return (
     <>
       <AppHeader
+        hideBack
         title="Home"
         componentId={componentId}
         rightItem={
@@ -26,7 +29,7 @@ export const Home: NavigationFunctionComponent = ({componentId}) => {
           />
         }
       />
-      <EmployeeList />
+      <EmployeeList componentId={componentId} />
       <SafeAreaView />
     </>
   );

@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Employee} from '../data/models/employee';
+import {Employee} from '../data';
+import {Navigation} from 'react-native-navigation';
 import {
   styles as cStyles,
   AppImage,
@@ -11,10 +12,13 @@ import {
 
 interface Props {
   employee: Employee;
+  onDelete: (employee: Employee) => void;
+  onEdite: (employee: Employee) => void;
 }
 
 export const EmployeeCard: React.FC<Props> = (props: Props) => {
-  const {id, name, img} = props.employee;
+  const {employee, onDelete, onEdite} = props;
+  const {age, name, img} = employee;
 
   return (
     <View style={styles.card}>
@@ -33,8 +37,8 @@ export const EmployeeCard: React.FC<Props> = (props: Props) => {
         }}>
         <View style={{flex: 1}}>
           <View style={{flexDirection: 'row'}}>
-            <AppText>id: </AppText>
-            <AppText>#{id}</AppText>
+            <AppText>age: </AppText>
+            <AppText>#{age}</AppText>
           </View>
           <View style={{flexDirection: 'row'}}>
             <AppText>name: </AppText>
@@ -50,12 +54,18 @@ export const EmployeeCard: React.FC<Props> = (props: Props) => {
             alignItems: 'center',
           }}>
           <AppIconButton
+            onPress={() => {
+              onEdite(employee);
+            }}
             name="edit"
             type={IconType.entypo}
             size={15}
             color="gray"
           />
           <AppIconButton
+            onPress={() => {
+              onDelete(employee);
+            }}
             name="delete"
             type={IconType.antDesign}
             size={15}

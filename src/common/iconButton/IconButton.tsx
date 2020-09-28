@@ -8,13 +8,13 @@ interface Props {
   type: IconType;
   name: string;
   size: number;
-  iconStyle?: TextStyle;
+  iconStyle?: FlexStyle;
   style?: FlexStyle;
   color: string;
-  onPress?: () => {};
+  onPress?: () => void;
 }
 
-export const AppIconButton = (props: Props) => {
+export const AppIconButton: React.FC<Props> = (props) => {
   const {style, onPress, iconStyle, ...rest} = props;
 
   return (

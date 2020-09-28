@@ -1,4 +1,5 @@
 export { AppImgPicker } from './imgPicker/ImgPicker';
+export { AppIndicator } from './indicator/Indeicator';
 export { AppButton } from './button/Button';
 export { AppInput } from './input/Input';
 export { styles } from './styles/styles';
@@ -10,4 +11,6 @@ export { AppList } from './list/list';
 export { AppHeader } from './Header/Header';
 export { appColors } from './Theme/colors';
 export { IconType } from './utils/icon';
+export * from './utils/localNotifications';
+
 export * from './utils/responsiveDimmensions';

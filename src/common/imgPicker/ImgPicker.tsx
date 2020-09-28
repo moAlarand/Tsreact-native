@@ -4,15 +4,16 @@ import {RectButton} from 'react-native-gesture-handler';
 import {AppImage, Props as ImgProps} from '../image/Image';
 import ImagePicker, {ImagePickerOptions} from 'react-native-image-picker';
 import {Source} from 'react-native-fast-image';
+import useEffect from 'react';
 
-interface Props extends Omit<ImgProps, 'source'> {
+interface Props extends ImgProps {
   title: string;
-  placeholderImg: Source | number;
+  onPick?: (uri: string) => void;
 }
 
 export const AppImgPicker: React.FC<Props> = (props) => {
-  const {title, placeholderImg, ...rest} = props;
-  const [img, setImg] = useState<Source | number>(placeholderImg);
+  const {title, source, onPick, ...rest} = props;
+  const [img, setImg] = useState<Source | number>(source);
   const options: ImagePickerOptions = {
     title,
   };
@@ -28,9 +29,10 @@ export const AppImgPicker: React.FC<Props> = (props) => {
       } else {
         const source = {uri: response.uri};
         setImg(source);
+        if (onPick) onPick(response.uri);
       }
     });
-  }, []);
+  }, [setImg, onPick]);
 
   return (
     <RectButton onPress={_showPicker}>

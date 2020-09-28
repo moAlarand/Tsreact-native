@@ -1,6 +1,8 @@
+import React from 'react';
 import {gestureHandlerRootHOC} from 'react-native-gesture-handler';
 import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
-
+import {Provider} from 'react-redux';
+import store from '../app/store';
 export interface Screen {
   name: string;
   component: NavigationFunctionComponent;
@@ -15,12 +17,18 @@ export const createScreen = (screen: Screen) => {
 
   if (ContextProvider) {
     ScreenWraper = (props) => (
-      <ContextProvider>
-        <Component {...props} />
-      </ContextProvider>
+      <Provider store={store}>
+        <ContextProvider>
+          <Component {...props} />
+        </ContextProvider>
+      </Provider>
     );
   } else {
-    ScreenWraper = Component;
+    ScreenWraper = (props) => (
+      <Provider store={store}>
+        <Component {...props} />
+      </Provider>
+    );
   }
 
   Navigation.registerComponent(name, () => gestureHandlerRootHOC(ScreenWraper));

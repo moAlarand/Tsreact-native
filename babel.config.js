@@ -1,3 +1,17 @@
 module.exports = {
-  presets: ['module:metro-react-native-babel-preset'],
+  presets:[ ['module:metro-react-native-babel-preset'],    [
+    "module:@babel/preset-typescript"
+  ]],
+  plugins: [
+    [
+      "@babel/plugin-proposal-decorators",
+      {
+        "legacy": true
+      }
+    ],
+
+    // [
+    //   "@babel/plugin-proposal-optional-catch-binding"
+    // ]
+  ]
 };

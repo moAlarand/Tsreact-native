@@ -1,20 +1,11 @@
 import React, {ReactElement} from 'react';
-import {
-  FlexStyle,
-  SafeAreaView,
-  StyleSheet,
-  TextStyle,
-  View,
-  Platform,
-} from 'react-native';
+import {SafeAreaView, StyleSheet, View, Platform} from 'react-native';
 import {Navigation} from 'react-native-navigation';
-import {
-  AppText,
-  AppIconButton,
-  IconType,
-  APPBAR_HEIGHT,
-  styles as cStyles,
-} from '..';
+import {AppText} from '../text/Text';
+import {AppIconButton} from '../iconButton/IconButton';
+import {IconType} from '../utils/icon';
+import {APPBAR_HEIGHT} from '../utils/responsiveDimmensions';
+import {styles as cStyles} from '../styles/styles';
 
 interface Props {
   title?: string;

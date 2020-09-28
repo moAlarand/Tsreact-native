@@ -1,22 +1,30 @@
 import React from 'react';
-import {FlexStyle, StyleSheet, TextStyle} from 'react-native';
+import {StyleSheet, TextStyle, FlexStyle} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import {AppText} from '../text/Text';
 import {appColors} from '../Theme/colors';
+import {AppIndicator} from '../indicator/Indeicator';
 
 interface Props {
   title: string;
+  processing?: boolean;
   style?: FlexStyle;
   textStyle?: TextStyle;
-  onPress?: () => {};
+  onPress?: () => void;
 }
 
 export const AppButton = (props: Props) => {
-  const {style, textStyle, title, onPress} = props;
+  const {style, textStyle, title, onPress, processing} = props;
 
   return (
-    <RectButton onPress={onPress} style={[styles.container, style]}>
-      <AppText style={{...styles.text, ...textStyle}}>{title}</AppText>
+    <RectButton
+      onPress={processing ? () => {} : onPress}
+      style={[styles.container, style]}>
+      {processing ? (
+        <AppIndicator color="white" />
+      ) : (
+        <AppText style={{...styles.text, ...textStyle}}>{title}</AppText>
+      )}
     </RectButton>
   );
 };

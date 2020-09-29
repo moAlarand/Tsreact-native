@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import store from '../app/store';
 export interface Screen {
   name: string;
-  component: NavigationFunctionComponent;
+  component: NavigationFunctionComponent<any>;
   contextProvider?: React.FC;
 }
 

@@ -1,5 +1,5 @@
-import React, {useCallback, useEffect} from 'react';
-import {EmployeeCard} from '../../components';
+import React, {useEffect} from 'react';
+import {EmployeeCard} from './EmployeeCard';
 import {AppIndicator, AppList, showError} from '../../common';
 import {Employee} from '../../data';
 import {fetchAllEmployees} from './employeesSlice';
@@ -16,18 +16,6 @@ export const EmployeeList: React.FC<Props> = ({componentId}) => {
   const {error, data, loading} = useSelector(
     (state: RooteStore) => state.employees,
   );
-
-  const _onDelete = useCallback((employee: Employee) => {
-    // Navigation.push(componentId, {
-    //   component: {name: 'create-employee', passProps: {employee}},
-    // });
-  }, []);
-
-  const _onEdite = useCallback((employee: Employee) => {
-    Navigation.push(componentId, {
-      component: {name: 'create-employee', passProps: {employee}},
-    });
-  }, []);
 
   useEffect(() => {
     dispatch(fetchAllEmployees());
@@ -51,7 +39,7 @@ export const EmployeeList: React.FC<Props> = ({componentId}) => {
       }}
       data={data}
       renderItem={({item}) => (
-        <EmployeeCard onEdite={_onEdite} onDelete={_onDelete} employee={item} />
+        <EmployeeCard componentId={componentId} employee={item} />
       )}
     />
   );

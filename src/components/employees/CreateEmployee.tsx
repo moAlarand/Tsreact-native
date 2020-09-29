@@ -6,7 +6,8 @@ import {creatorEditEmployee, reset} from './employeesSlice';
 import {useDispatch, useSelector} from 'react-redux';
 import {RooteStore} from '../../app/rooteReducer';
 import {showSuccess} from '../../common';
-import {EmployeeFormBody} from '../../components';
+import {EmployeeFormBody} from './EmployeeFormBody';
+import {Keyboard} from 'react-native';
 
 interface formProps {
   employee?: Employee;
@@ -27,6 +28,7 @@ export const CreateEmployeeForm: React.FC<formProps> = (props) => {
 
   const _onSumbit = useCallback(
     (values: Employee, formikHandlers: FormikHelpers<Employee>) => {
+      Keyboard.dismiss();
       dispatch(creatorEditEmployee(values, formikHandlers));
     },
     [dispatch],

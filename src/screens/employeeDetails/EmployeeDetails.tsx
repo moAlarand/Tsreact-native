@@ -1,8 +1,20 @@
-
 import React from 'react';
-import { View, Text } from 'react-native';
+import {NavigationFunctionComponent} from 'react-native-navigation';
+import {Employee} from '../../data/models/employee';
+import {AppHeader} from '../../common';
+import {EmployeeDetailsPreview} from '../../components/employees';
 
-
-export const Ap = () => {
-  return <Text> dfdf </Text>;
+interface Props {
+  employee: Employee;
 }
+
+export const EmployeeDetails: NavigationFunctionComponent<Props> = (props) => {
+  const {componentId, employee} = props;
+
+  return (
+    <>
+      <AppHeader componentId={componentId} title="details" />
+      <EmployeeDetailsPreview employee={employee} />
+    </>
+  );
+};

@@ -1,15 +1,15 @@
-import React, {useCallback, useEffect} from 'react';
+import React from 'react';
 import {StyleSheet, View} from 'react-native';
-import {AppImgPicker} from '../common/imgPicker/ImgPicker';
+import {AppImgPicker} from '../../common/imgPicker/ImgPicker';
 import {
   AppText,
   styles as cStyles,
   AppInput,
   appColors,
   AppButton,
-} from '../common';
+} from '../../common';
 import {FormikProps} from 'formik';
-import {Employee} from '../data';
+import {Employee} from '../../data';
 
 export const EmployeeFormBody: React.FC<FormikProps<Employee>> = (props) => {
   const {
@@ -30,7 +30,7 @@ export const EmployeeFormBody: React.FC<FormikProps<Employee>> = (props) => {
         source={
           values.img
             ? {uri: values.img}
-            : require('../assets/img/placeholderImg.png')
+            : require('../../assets/img/placeholderImg.png')
         }
         onPick={(img) => setFieldValue('img', img)}
         title="Pick Image"

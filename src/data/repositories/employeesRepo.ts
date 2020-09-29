@@ -27,4 +27,6 @@ export class EmployeesRepo {
     return this.employeesApi.editeEmployee({ ...employee, img: url });
   }
 
+  deleteEmployee = this.employeesApi.deleteEmployee;
+
 }

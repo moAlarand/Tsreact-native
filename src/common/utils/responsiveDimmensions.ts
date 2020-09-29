@@ -10,5 +10,6 @@ export const decorateHeights = Platform.OS === "android" ? StatusBar.currentHeig
 export const APPBAR_HEIGHT = Platform.OS === "ios" ? 54 : 60;
 
 export const { width: windowWidth, height: windowHeight } = Dimensions.get("window");
+export const { width: screenWidth, height: screenHeight } = Dimensions.get("screen");
 
 export const aspectRatio = windowHeight / windowWidth;

@@ -4,7 +4,7 @@ import {Navigation, NavigationFunctionComponent} from 'react-native-navigation';
 import {IconType, AppHeader} from '../../common';
 import {appColors} from '../../common/Theme/colors';
 import {AppIconButton} from '../../common/iconButton/IconButton';
-import {EmployeeList} from '../../features/employees/EmployeesList';
+import {EmployeeList} from '../../components/employees';
 
 export const Home: NavigationFunctionComponent = (props) => {
   const {componentId} = props;

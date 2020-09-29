@@ -30,4 +30,9 @@ export class EmployeesApi {
     const res: AxiosResponse<Employee> = await Axios.put(`/employees/${employee.id}.json`, employee);
     return res.data;
   }
+
+  @handleApiError
+  async deleteEmployee(id: string): Promise<void | never> {
+    return Axios.delete(`/employees/${id}.json`);
+  }
 }

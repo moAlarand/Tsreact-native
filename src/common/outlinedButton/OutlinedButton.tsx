@@ -1,5 +1,5 @@
 import React from 'react';
-import {StyleSheet, TextStyle, FlexStyle, View} from 'react-native';
+import {StyleSheet, TextStyle, FlexStyle} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import {AppText} from '../text/Text';
 import {appColors} from '../Theme/colors';
@@ -14,42 +14,33 @@ interface Props {
   onPress?: () => void;
 }
 
-export const AppButton = (props: Props) => {
+export const AppOutlinedButton = (props: Props) => {
   const {style, textStyle, title, onPress, processing} = props;
 
   return (
     <RectButton
       onPress={processing ? () => {} : onPress}
       style={[styles.container, style]}>
-      <View
-        style={{
-          borderRadius: 4,
-          justifyContent: 'center',
-          alignItems: 'center',
-          backgroundColor: appColors.primary,
-          flex: 1,
-          alignSelf: 'stretch',
-          padding: 5,
-        }}>
-        {processing ? (
-          <AppIndicator color="white" />
-        ) : (
-          <AppText style={{...styles.text, ...textStyle}}>{title}</AppText>
-        )}
-      </View>
+      {processing ? (
+        <AppIndicator color="white" />
+      ) : (
+        <AppText style={{...styles.text, ...textStyle}}>{title}</AppText>
+      )}
     </RectButton>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
+    borderRadius: 4,
     height: 40,
     justifyContent: 'center',
     alignItems: 'center',
+    padding: 5,
     ...cStyles.shadow,
   },
   text: {
     fontWeight: 'bold',
-    color: 'white',
+    color: appColors.primary,
   },
 });

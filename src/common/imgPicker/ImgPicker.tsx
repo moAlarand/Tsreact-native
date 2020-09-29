@@ -1,10 +1,9 @@
-import React, {useCallback, useState} from 'react';
+import React, {useCallback, useState, useEffect} from 'react';
 import {StyleSheet} from 'react-native';
 import {RectButton} from 'react-native-gesture-handler';
 import {AppImage, Props as ImgProps} from '../image/Image';
 import ImagePicker, {ImagePickerOptions} from 'react-native-image-picker';
 import {Source} from 'react-native-fast-image';
-import useEffect from 'react';
 
 interface Props extends ImgProps {
   title: string;
@@ -13,10 +12,15 @@ interface Props extends ImgProps {
 
 export const AppImgPicker: React.FC<Props> = (props) => {
   const {title, source, onPick, ...rest} = props;
+  console.log('>>>>>>>>>>>>> source', source);
   const [img, setImg] = useState<Source | number>(source);
   const options: ImagePickerOptions = {
     title,
   };
+
+  useEffect(() => {
+    setImg(source);
+  }, [source]);
 
   const _showPicker = useCallback(() => {
     ImagePicker.showImagePicker(options, (response) => {
@@ -36,7 +40,7 @@ export const AppImgPicker: React.FC<Props> = (props) => {
 
   return (
     <RectButton onPress={_showPicker}>
-      <AppImage {...rest} source={img} />
+      <AppImage source={img} {...rest} />
     </RectButton>
   );
 };

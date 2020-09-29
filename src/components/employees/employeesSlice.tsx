@@ -7,6 +7,7 @@ import {FormikHelpers} from 'formik';
 interface EmployeesState {
   data: Employee[];
   loading: boolean;
+  deletingEmployeeId: string | null;
   error: string | null;
   success: string | null;
 }
@@ -14,6 +15,7 @@ interface EmployeesState {
 const initialState: EmployeesState = {
   data: [],
   loading: false,
+  deletingEmployeeId: null,
   error: null,
   success: null,
 };
@@ -24,6 +26,10 @@ const employeesSlice = createSlice({
   reducers: {
     start(state) {
       state.loading = true;
+      state.error = null;
+    },
+    startDelete(state, action: PayloadAction<string>) {
+      state.deletingEmployeeId = action.payload;
       state.error = null;
     },
     addNewEmployee(state, action: PayloadAction<Employee>) {
@@ -39,6 +45,13 @@ const employeesSlice = createSlice({
       state.success = 'success';
       state.error = null;
     },
+    employeeDeleted(state, action: PayloadAction<string>) {
+      state.deletingEmployeeId = null;
+      const newData = state.data.filter(({id}) => action.payload != id);
+      state.data = newData;
+      state.success = 'success deleted';
+      state.error = null;
+    },
     success(state, action: PayloadAction<Employee[]>) {
       state.loading = false;
       state.data = action.payload;
@@ -46,10 +59,12 @@ const employeesSlice = createSlice({
     },
     failed(state, action: PayloadAction<string>) {
       state.loading = false;
+      state.deletingEmployeeId = null;
       state.error = action.payload;
     },
     reset(state) {
       state.loading = false;
+      state.deletingEmployeeId = null;
       state.error = null;
       state.success = null;
     },
@@ -62,6 +77,8 @@ export const {
   start,
   addNewEmployee,
   editeEmployee,
+  employeeDeleted,
+  startDelete,
   reset,
 } = employeesSlice.actions;
 export default employeesSlice.reducer;
@@ -94,4 +111,14 @@ export const creatorEditEmployee = (
     dispatch(failed(error.message));
   }
   setSubmitting(false);
+};
+
+export const deleteEmployee = (id: string): AppThunk => async (dispatch) => {
+  dispatch(startDelete(id));
+  try {
+    await EmployeesRepo.instance.deleteEmployee(id);
+    dispatch(employeeDeleted(id));
+  } catch (error) {
+    dispatch(failed(error.message));
+  }
 };

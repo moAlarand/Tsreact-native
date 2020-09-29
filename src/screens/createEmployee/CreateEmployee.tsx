@@ -1,14 +1,14 @@
 import React from 'react';
 import {NavigationFunctionComponent} from 'react-native-navigation';
 import {AppHeader} from '../../common';
-import {CreateEmployeeForm} from '../../features/employees/CreateEmployee';
+import {CreateEmployeeForm} from '../../components/employees';
 import {Employee} from '../../data/models/employee';
 
 interface formProps {
   employee?: Employee;
 }
 
-export const createEmployee: NavigationFunctionComponent<formProps> = ({
+export const CreateEmployee: NavigationFunctionComponent<formProps> = ({
   componentId,
   employee,
 }) => {

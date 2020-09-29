@@ -564,7 +564,7 @@ SPEC CHECKSUMS:
   React-jsi: 54245e1d5f4b690dec614a73a3795964eeef13a8
   React-jsiexecutor: 8ca588cc921e70590820ce72b8789b02c67cce38
   React-jsinspector: b14e62ebe7a66e9231e9581279909f2fc3db6606
-  react-native-image-picker: c6d75c4ab2cf46f9289f341242b219cb3c1180d3
+  react-native-image-picker: 32d1ad2c0024ca36161ae0d5c2117e2d6c441f11
   React-RCTActionSheet: 910163b6b09685a35c4ebbc52b66d1bfbbe39fc5
   React-RCTAnimation: 9a883bbe1e9d2e158d4fb53765ed64c8dc2200c6
   React-RCTBlob: 39cf0ece1927996c4466510e25d2105f67010e13
@@ -580,7 +580,7 @@ SPEC CHECKSUMS:
   RNFBApp: a74d8259d827c8bf55100e759cffa2e50ba6fe30
   RNFBStorage: 5a2b16803e784436fb1261806edee98a0397714b
   RNGestureHandler: 7a5833d0f788dbd107fbb913e09aa0c1ff333c39
-  RNSnackbar: a08d0d7e1e18c7312cd2b9c6f476211267855bce
+  RNSnackbar: 57932b2527096e609a86b1da2a2dfa46d624dc7c
   RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   SDWebImage: 112503ec94a5a2a41869503844a15e8d8f1ead5c
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
